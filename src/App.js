@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Nav from './nav';
+import Hero from './hero';
+import Cards from './card';
+import Cardbox from './cardbox';
+import carddet from './carddet';
+import Member from './member';
+import "./index.css"
 
-function App() {
+
+export default function App() {
+  const cardData = carddet.map(details =>{
+    return <Cardbox
+            key ={details.id}
+            image ={details.image}
+            head ={details.headtext}
+            body ={details.bodytext}
+    />
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <Nav/> 
+     <Hero/>
+     <Cards/>
+     <div className='cardgrid'>
+     {cardData}
+     </div>
+     <Member/>
     </div>
   );
 }
 
-export default App;
+
